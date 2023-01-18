@@ -45,9 +45,16 @@ import {
 } from '../../constants'
 
 
-const MyHeader = () =>
+const MyHeader = ({name}) =>
 {
-    return <h1>Hello from custom components</h1>
+    return (
+        <>
+       { name ? <h1>Hello {name} !</h1> : <h1> hello from custom component</h1>}
+    </>
+    )
+    
+    
+    
 }
 /**
  * This is the home page for Retail React App.
