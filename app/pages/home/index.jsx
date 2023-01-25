@@ -12,6 +12,8 @@ import {useLocation} from 'react-router-dom'
 
 // Components
 import {
+    Alert,
+    AlertIcon,
     Box,
     Button,
     SimpleGrid,
@@ -52,7 +54,13 @@ import {
  */
 
 const MyHeader = ({name}) => {
-    return <Box>{name ? <h1>hello from {name} </h1> : <h1> Hello from custom component</h1>}</Box>
+    return <Box>{name ? <h1>Hello from {name} </h1> : <h1> Hello from custom component</h1>}
+        <Alert>
+            <AlertIcon />
+            Chakra UI components unlocked!
+        </Alert>
+
+    </Box>
 }
 
 const Home = ({productSearchResult, isLoading}) => {
@@ -100,6 +108,8 @@ const Home = ({productSearchResult, isLoading}) => {
                     </Stack>
                 }
             />
+
+            <MyHeader name="Opeyemi Peter" />
 
             <Section
                 background={'gray.50'}
