@@ -7,7 +7,7 @@
 const card = {
     py: 6,
     px: 4,
-    backgroundColor: 'white',
+    backgroundColor: 'fbfbf8',
     rounded: 'base',
     boxShadow: 'base'
 }
@@ -36,6 +36,7 @@ export default {
         width: '100%',
         maxWidth: 'container.xxxl',
         marginLeft: 'auto',
-        marginRight: 'auto'
+        marginRight: 'auto',
+        backgroundColor: "#fbfbf8"
     }
 }
