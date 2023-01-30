@@ -58,7 +58,8 @@ const App = (props) => {
         children,
         targetLocale = DEFAULT_LOCALE,
         messages = {},
-        categories: allCategories = {}
+        categories: allCategories = {},
+        privacyPolicy
     } = props
 
     const appOrigin = getAppOrigin()
@@ -257,6 +258,13 @@ const App = (props) => {
                                 </SkipNavContent>
 
                                 {!isCheckout ? <Footer /> : <CheckoutFooter />}
+                                <div>
+                                    {privacyPolicy && (
+                                        <div
+                                            dangerouslySetInnerHTML={{__html: privacyPolicy.c_body}}
+                                        />
+                                    )}
+                                </div>
 
                                 <AuthModal {...authModal} />
                             </AddToCartModalProvider>
@@ -328,6 +336,15 @@ Learn more with our localization guide. https://sfdc.co/localization-guide
     // the application.
     const categories = flatten(rootCategory, 'categories')
 
+    let privacyPolicy
+    const result = await fetch(
+        `http://localhost:3000/mobify/proxy/ocapi/s/RefArch/dw/shop/v20_2/content/privacy-policy?client_id=${'1d763261-6522-4913-9d52-5d947d3b94c4'}`
+    )
+
+    if (result.ok) {
+        privacyPolicy = await result.json()
+    }
+
     return {
         targetLocale,
         messages,
@@ -341,7 +358,8 @@ App.propTypes = {
     targetLocale: PropTypes.string,
     messages: PropTypes.object,
     categories: PropTypes.object,
-    config: PropTypes.object
+    config: PropTypes.object,
+    privacyPolicy: PropTypes.object
 }
 
 export default App
