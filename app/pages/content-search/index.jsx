@@ -32,7 +32,7 @@ ContentSearch.getProps = async () => {
     let contentResult
     //Make a call to the URL substituting Key Values from table
     const res = await fetch(
-        "http://localhost:3000/mobify/proxy/ocapi/s/RefArch/dw/shop/v20_2/content_search?q=about&client_id=d339f666-95d3-4a99-99fb-c5b55f0d4dc1"
+        `http://localhost:3000/mobify/proxy/ocapi/s/RefArch/dw/shop/v20_2/content_search?q=about&client_id=${'6379ddf0-b822-4064-97cb-cf7d5efd6ea2'}`
     )
     if (res.ok) {
         contentResult = await res.json()
