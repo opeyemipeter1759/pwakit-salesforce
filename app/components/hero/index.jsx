@@ -7,56 +7,66 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Box, Flex, Heading, Stack, Image} from '@chakra-ui/react'
+import {Box, Flex, Heading, Stack, Image, Text} from '@chakra-ui/react'
 
 const Hero = ({title, img, actions, ...props}) => {
     const {src, alt} = img
 
     return (
         <Box
-            marginBottom={{base: 0, md: 10}}
-            height={{lg: 'xl'}}
+            // marginBottom={{base: 0, md: 2}}
+            // height={{lg: 'xl'}}
             position={{lg: 'relative'}}
             {...props}
         >
-            <Stack
-                align={'center'}
+            {/* <Stack
+                // align={'center'}
                 spacing={{base: 8, md: 10}}
-                paddingTop={{base: 12, md: 10}}
+                paddingTop={{base: 12, md: -3}}
                 paddingBottom={{base: 6, md: 10}}
-                direction={{base: 'column', lg: 'row'}}
-            >
-                <Stack flex={1} spacing={{base: 5, md: 8}}>
-                    <Heading
-                        as="h1"
-                        fontSize={{base: '4xl', md: '5xl', lg: '6xl'}}
-                        maxWidth={{base: '75%', md: '50%', lg: 'md'}}
-                    >
-                        {title}
-                    </Heading>
-
-                    {actions && <Box width={{base: 'full', lg: 'inherit'}}>{actions}</Box>}
-                </Stack>
-                <Flex
-                    flex={1}
-                    justify={'center'}
-                    align={'center'}
-                    position={'relative'}
-                    width={'full'}
-                    paddingTop={{base: 4, lg: 0}}
-                >
-                    <Box position={'relative'} width={{base: 'full', md: '80%', lg: 'full'}}>
+                // direction={{ base: 'column', lg: 'row' }}   
+            > */}
+            {/* <Stack> */}
+            <Box marginTop={{base:-"44px", md:"", lg:"-10px" }} width="full">
                         <Image
                             fit={'cover'}
-                            align={'center'}
+                            // align={'center'}
                             width={'100%'}
                             height={'100%'}
                             src={src}
                             alt={alt}
                         />
                     </Box>
-                </Flex>
-            </Stack>
+                    <Heading
+                        background="#00a1e0"
+                        color="white"
+                        position="relative"
+                        // padding="20px 0 20px 100px"
+                        paddingLeft={{ base: "15px", lg:"100px" }}
+                        paddingTop={{base:"0px", lg:"20px"}}
+                        // paddingRight={{base:}}
+                        paddingBottom={{base:"10px", lg:"20px"}}
+                        top={{base:"-70px", md:'-148px', lg:"-209px"}}
+                        as="p"
+                        maxWidth={{base: '144px', md: '299px', lg: '400px'}}
+                    >
+                        <Text
+                        fontSize={{ base: '14px', md: '24px', lg: '1xl' }}
+                        paddingLeft={{ base: "20px", md: "20px" }}
+                        whiteSpace="nowrap"
+                        fontWeight="normal"    
+                        as="samp">
+                        {title}
+                        </Text>
+                    </Heading>
+
+                    {/* {actions && <Box width={{base: 'full', lg: 'inherit'}}>{actions}</Box>} */}
+                {/* </Stack> */}
+                {/* <Flex
+                > */}
+                
+                {/* </Flex> */}
+            {/* </Stack> */}
         </Box>
     )
 }

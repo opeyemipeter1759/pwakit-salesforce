@@ -23,11 +23,7 @@ import {
     Flex,
     Stack,
     Container,
-    Link,
-    Heading,
-    Grid,
-    GridItem,
-    Image
+    Link
 } from '@chakra-ui/react'
 
 // Project Components
@@ -39,6 +35,7 @@ import ProductScroller from '../../components/product-scroller'
 // Others
 import {getAssetUrl} from 'pwa-kit-react-sdk/ssr/universal/utils'
 import {heroFeatures, features} from './data'
+
 //Hooks
 import useEinstein from '../../commerce-api/hooks/useEinstein'
 
@@ -56,21 +53,17 @@ import {
  * categories and products, data is from local file.
  */
 
-// const MyHeader = ({name}) => {
-//     return <Box>{name ? <h1>Hello from {name} </h1> : <h1> Hello from custom component</h1>}
-//         <Alert>
-//             <AlertIcon />
-//             Chakra UI components unlocked!
-//         </Alert>
+const MyHeader = ({name}) => {
+    return <Box>{name ? <h1>Hello from {name} </h1> : <h1> Hello from custom component</h1>}
+        <Alert>
+            <AlertIcon />
+            Chakra UI components unlocked!
+        </Alert>
 
-//     </Box>
-// }
+    </Box>
+}
 
-const Home = ({productSearchResult, isLoading}) => {
-    const basicBoxStyles = {
-        background: 'url("static/img/women.jpg") center/cover no-repeat'
-    }
-
+const CustomHome = ({productSearchResult, isLoading}) => {
     const intl = useIntl()
     const einstein = useEinstein()
     const {pathname} = useLocation()
@@ -89,117 +82,34 @@ const Home = ({productSearchResult, isLoading}) => {
             />
 
             <Hero
-                title="Summer Style"
+                title={intl.formatMessage({
+                    defaultMessage: 'The React PWA Starter Store for Retail',
+                    id: 'home.title.react_starter_store'
+                })}
                 img={{
-                    src: getAssetUrl('static/img/women.jpg'),
-                    alt: 'Women Image'
+                    src: getAssetUrl('static/img/hero.png'),
+                    alt: 'npx pwa-kit-create-app'
                 }}
-                // actions={
-                //     <Stack spacing={{base: 4, sm: 6}} direction={{base: 'column', sm: 'row'}}>
-                //         <Button
-                //             as={Link}
-                //             href="https://developer.salesforce.com/docs/commerce/pwa-kit-managed-runtime/guide/getting-started.html"
-                //             target="_blank"
-                //             width={{base: 'full', md: 'inherit'}}
-                //             paddingX={7}
-                //             _hover={{textDecoration: 'none'}}
-                //         >
-                //             <FormattedMessage
-                //                 defaultMessage="Get started"
-                //                 id="home.link.get_started"
-                //             />
-                //         </Button>
-                //     </Stack>
-                // }
+                actions={
+                    <Stack spacing={{base: 4, sm: 6}} direction={{base: 'column', sm: 'row'}}>
+                        <Button
+                            as={Link}
+                            href="https://developer.salesforce.com/docs/commerce/pwa-kit-managed-runtime/guide/getting-started.html"
+                            target="_blank"
+                            width={{base: 'full', md: 'inherit'}}
+                            paddingX={7}
+                            _hover={{textDecoration: 'none'}}
+                        >
+                            <FormattedMessage
+                                defaultMessage="Get started"
+                                id="home.link.get_started"
+                            />
+                        </Button>
+                    </Stack>
+                }
             />
 
-            {/* <Grid h="" templateRows="repeat(2, 1fr)" templateColumns="repeat(5, 1fr)" gap={4}>
-               
-                <GridItem colSpan={2}>
-                    <Image src={getAssetUrl('static/img/women-dresses.jpg')} />
-                </GridItem>
-                <GridItem>
-                    <Image src={getAssetUrl('static/img/jewelleries.jpg')} />
-                </GridItem>
-                <GridItem colSpan={2}>
-                    <Image src={getAssetUrl('static/img/suits.jpg')} />
-                </GridItem>
-                <GridItem colSpan={4}>
-                    <Image src={getAssetUrl('static/img/shoes.jpg')} />
-                </GridItem>
-            </Grid> */}
-            <Grid
-                templateAreas={`
-                  "dresses jewellery suits"
-                  " shoes shoes suits"`}
-                gridTemplateRows={'1fr 1fr 1fr'}
-                gridTemplateColumns={'1fr 1fr'}
-                width="80%"
-                margin="auto"
-                paddingLeft="0"
-            >
-                <GridItem area={'dresses'}>
-                    <Image src={getAssetUrl('static/img/women-dresses.jpg')} />
-                    <Heading
-                        as="p"
-                        fontSize={{base: '1xl', md: '3xl', lg: '20px'}}
-                        color="white"
-                        position="relative"
-                        top={{base: '-130px', md: '100px', lg: '-130px'}}
-                        fontWeight="normal"
-                        left={{lg: '30px'}}
-                    >
-                        Women's Dresses
-                    </Heading>
-                </GridItem>
-                <GridItem area={'jewellery'}>
-                    <Image src={getAssetUrl('static/img/jewelleries.jpg')} />
-                    <Heading
-                        as="p"
-                        fontSize={{base: '20px', md: '3xl', lg: '20px'}}
-                        color="white"
-                        position="relative"
-                        left={{lg: '30px'}}
-                        top={{base: '-130px', md: '100px', lg: '-80px'}}
-                        fontWeight="normal"
-                    >
-                        Women's Jewelry
-                    </Heading>
-                </GridItem>
-                <GridItem area={'shoes'}>
-                    <Image
-                        src={getAssetUrl('static/img/shoes.jpg')}
-                        marginTop={{base: '-100px', md: '120px', lg: '-80px'}}
-                    />
-                    <Heading
-                        as="p"
-                        fontSize={{base: '20px', md: '3xl', lg: '20px'}}
-                        color="white"
-                        position="relative"
-                        top={{base: '-130px', md: '100px', lg: '-130px'}}
-                        fontWeight="normal"
-                        left={{lg: '30px'}}
-                    >
-                        Shop Red
-                    </Heading>
-                </GridItem>
-                <GridItem area={'suits'}>
-                    <Image src={getAssetUrl( 'static/img/suits.jpg' )} width={{lg:'73%'}} />
-                    <Heading
-                        as="p"
-                        fontSize={{base: '1xl', md: '3xl', lg: '20px'}}
-                        color="white"
-                        position="relative"
-                        top={{base: '-130px', md: '100px', lg: '-130px'}}
-                        fontWeight="normal"
-                        left={{lg: '30px'}}
-                    >
-                        Men's Jackets
-                    </Heading>
-                </GridItem>
-            </Grid>
-
-            {/* <MyHeader name="Opeyemi Peter" /> */}
+            <MyHeader name="Opeyemi Peter" />
 
             <Section
                 background={'gray.50'}
@@ -358,7 +268,7 @@ const Home = ({productSearchResult, isLoading}) => {
                         <>
                             {intl.formatMessage({
                                 defaultMessage: 'Contact our support staff.',
-                                id: 'home.description.here_to_help'
+                                id: 'home.description.herCustomHomee_to_help'
                             })}
                         </>
                         <br />
@@ -421,4 +331,4 @@ Home.propTypes = {
     isLoading: PropTypes.bool
 }
 
-export default Home
+export default CustomHome

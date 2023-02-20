@@ -23,7 +23,8 @@ import {configureRoutes} from './utils/routes-utils'
 const fallback = <Skeleton height="75vh" width="100%" />
 
 // Pages
-const Home = loadable(() => import('./pages/home'), {fallback})
+const Home = loadable( () => import( './pages/home' ), { fallback } )
+const CustomHome =loadable(()=>import('./pages/customhome/index'),{fallback})
 const Login = loadable( () => import( './pages/login' ), { fallback } )
 const ContentSearch = loadable( () => import( './pages/content-search' ), { fallback } )
 const ContentDetails = loadable(() => import('./pages/content-details'), {fallback})
@@ -45,6 +46,11 @@ const routes = [
         component: Home,
         exact: true
     },
+    // {
+    //     path: '/customhome',
+    //     component: CustomHome,
+    //     exact: true
+    // },
     {
         path: '/login',
         component: Login,
