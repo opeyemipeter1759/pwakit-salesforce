@@ -17,16 +17,17 @@ import {
     Box,
     Button,
     SimpleGrid,
-    HStack,
-    VStack,
-    Text,
+        // HStack,
+    // VStack,
+    // Text,
     Flex,
-    Stack,
-    Container,
-    Link,
+    // Stack,
+    // Container,
+    // Link,
     Heading,
     Grid,
     GridItem,
+    BreadcrumbLink as ChakraBreadcrumbLink,
     Image
 } from '@chakra-ui/react'
 
@@ -134,9 +135,10 @@ const Home = ({productSearchResult, isLoading}) => {
                   " shoes shoes suits"`}
                 gridTemplateRows={'1fr 1fr 1fr'}
                 gridTemplateColumns={'1fr 1fr'}
-                width="80%"
-                margin="auto"
+                width="90%"
+                margin="-80px auto 0px auto"
                 paddingLeft="0"
+            
             >
                 <GridItem area={'dresses'}>
                     <Image src={getAssetUrl('static/img/women-dresses.jpg')} />
@@ -184,7 +186,7 @@ const Home = ({productSearchResult, isLoading}) => {
                     </Heading>
                 </GridItem>
                 <GridItem area={'suits'}>
-                    <Image src={getAssetUrl( 'static/img/suits.jpg' )} width={{lg:'73%'}} />
+                    <Image src={getAssetUrl( 'static/img/suits.jpg' )} width={{lg:'93%'}} />
                     <Heading
                         as="p"
                         fontSize={{base: '1xl', md: '3xl', lg: '20px'}}
@@ -200,8 +202,181 @@ const Home = ({productSearchResult, isLoading}) => {
             </Grid>
 
             {/* <MyHeader name="Opeyemi Peter" /> */}
+            <SimpleGrid columns={3} spacingX="40px" spacingY="20px" width="90%" margin="-350px auto 0px auto">
+                <Box height="">
+                    <Image src={getAssetUrl('static/img/sleeve.jpg')} width="100%" />
+                    <Image
+                        src={getAssetUrl('static/img/orange-swatch.jpg')}
+                        width="1.8em"
+                        borderRadius="0.9em"
+                        height="1.8em"
+                        marginTop="0.5rem"
+                    />
+                    <Heading
+                        as="p"
+                        fontSize={{lg: '1em'}}
+                        color="#00A1E0"
+                        fontWeight="bold"
+                        marginTop="0.5rem"
+                    >
+                        Sleeveless Pleated Top.
+                    </Heading>
+                    <Heading
+                        as="p"
+                        fontSize={{lg: '1em'}}
+                        color="black"
+                        fontWeight="bold"
+                        marginTop="0.3rem"
+                    >
+                        £31.36
+                    </Heading>
+                </Box>
+                <Box padding="1.25rem">
+                    <Heading
+                        as="h1"
+                        fontSize={{lg: '4em'}}
+                        color="#00A1E0"
+                        fontWeight="200"
+                        textAlign="center"
+                        lineHeight="8rem"
+                    >
+                        Styles to Love
+                    </Heading>
+                    <Heading
+                        as="p"
+                        fontSize={{lg: '1em'}}
+                        color="#00A1E0"
+                        textAlign="center"
+                        fontWeight="normal"
+                    >
+                        Only Online
+                    </Heading>
+                </Box>
+                <Box>
+                    <Image src={getAssetUrl('static/img/white-top.jpg')} width="100%" />
+                    <Image
+                        src={getAssetUrl('static/img/white-swatch.jpg')}
+                        width="1.8em"
+                        borderRadius="0.9em"
+                        height="1.8em"
+                        marginTop="0.5rem"
+                    />
+                    <Heading
+                        as="p"
+                        fontSize={{lg: '1em'}}
+                        color="#00A1E0"
+                        fontWeight="bold"
+                        marginTop="0.5rem"
+                    >
+                        Woven Trimmed Cardigan
+                    </Heading>
+                    <Heading
+                        as="p"
+                        fontSize={{lg: '1em'}}
+                        color="black"
+                        fontWeight="bold"
+                        marginTop="0.3rem"
+                    >
+                        £56.96
+                    </Heading>
+                </Box>
+                <Box>
+                    <Image src={getAssetUrl('static/img/black-suit.jpg')} width="100%" />
+                    <Image
+                        src={getAssetUrl('static/img/black-swatch.jpg')}
+                        width="1.8em"
+                        borderRadius="0.9em"
+                        height="1.8em"
+                        marginTop="0.5rem"
+                    />
+                    <Heading
+                        as="p"
+                        fontSize={{lg: '1em'}}
+                        color="#00A1E0"
+                        fontWeight="bold"
+                        marginTop="0.5rem"
+                    >
+                        Black Single Pleat Athletic Fit Wool Suit
+                    </Heading>
+                    <Heading
+                        as="p"
+                        fontSize={{lg: '1em'}}
+                        color="black"
+                        fontWeight="bold"
+                        marginTop="0.3rem"
+                    >
+                        £191.99
+                    </Heading>
+                </Box>
+                <Box>
+                    <Image src={getAssetUrl('static/img/black-top.jpg')} width="100%" />
+                    <Flex>
+                        <Box pl="2">
+                            <Image
+                                src={getAssetUrl('static/img/black-swatch.jpg')}
+                                width="1.8em"
+                                borderRadius="0.9em"
+                                height="1.8em"
+                                marginTop="0.5rem"
+                            />
+                        </Box>
+                        <Box pl="2">
+                            <Image
+                                src={getAssetUrl('static/img/lemon-swatch.jpg')}
+                                width="1.8em"
+                                borderRadius="0.9em"
+                                height="1.8em"
+                                marginTop="0.5rem"
+                            />
+                        </Box>
+                        <Box pl="2">
+                            <Image
+                                src={getAssetUrl('static/img/ash-swatch.jpg')}
+                                width="1.8em"
+                                borderRadius="0.9em"
+                                height="1.8em"
+                                marginTop="0.5rem"
+                            />
+                        </Box>
+                    </Flex>
+                    <Heading
+                        as="p"
+                        fontSize={{lg: '1em'}}
+                        color="#00A1E0"
+                        fontWeight="bold"
+                        marginTop="0.5rem"
+                    >
+                        3/4 Sleeve V-Neck Top
+                    </Heading>
+                    <Heading
+                        as="p"
+                        fontSize={{lg: '1em'}}
+                        color="black"
+                        fontWeight="bold"
+                        marginTop="0.3rem"
+                    >
+                        £15.36
+                    </Heading>
+                </Box>
+                <Box>
+                    <Image src={getAssetUrl('static/img/earrring.jpg')} width="100%" />
+                    <Image
+                        src={getAssetUrl('static/img/ash-swatch.jpg')}
+                        width="1.8em"
+                        borderRadius="0.9em"
+                        height="1.8em"
+                        marginTop="0.5rem"
+                    />
+                    <Heading as="p" fontSize={{lg: '1em'}} color="#00A1E0" fontWeight="bold">
+                        Cluster Drop Earring
+                    </Heading>
+                    <Heading as="p" fontSize={{lg: '1em'}} color="black" fontWeight="bold">
+                        £16.64
+                    </Heading>
+                </Box>
+            </SimpleGrid>
 
-            <Section
+            {/* <Section
                 background={'gray.50'}
                 marginX="auto"
                 paddingY={{base: 8, md: 16}}
@@ -383,7 +558,7 @@ const Home = ({productSearchResult, isLoading}) => {
                     </Button>
                 }
                 maxWidth={'xl'}
-            />
+            /> */}
         </Box>
     )
 }
