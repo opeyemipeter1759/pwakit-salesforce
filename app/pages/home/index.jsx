@@ -8,6 +8,7 @@
 import React, {useEffect} from 'react'
 import PropTypes from 'prop-types'
 import {useIntl, FormattedMessage} from 'react-intl'
+import {categoryUrlBuilderSingle, productUrlBuilderSingle} from '../../utils/url'
 import {useLocation} from 'react-router-dom'
 
 // Components
@@ -17,7 +18,7 @@ import {
     Box,
     Button,
     SimpleGrid,
-        // HStack,
+    // HStack,
     // VStack,
     // Text,
     Flex,
@@ -138,10 +139,11 @@ const Home = ({productSearchResult, isLoading}) => {
                 width="90%"
                 margin="-80px auto 0px auto"
                 paddingLeft="0"
-            
             >
                 <GridItem area={'dresses'}>
-                    <Image src={getAssetUrl('static/img/women-dresses.jpg')} />
+                    <a href={categoryUrlBuilderSingle('womens-clothing-dresses')}>
+                        <Image src={getAssetUrl('static/img/women-dresses.jpg')} />
+                    </a>
                     <Heading
                         as="p"
                         fontSize={{base: '1xl', md: '3xl', lg: '20px'}}
@@ -155,7 +157,9 @@ const Home = ({productSearchResult, isLoading}) => {
                     </Heading>
                 </GridItem>
                 <GridItem area={'jewellery'}>
-                    <Image src={getAssetUrl('static/img/jewelleries.jpg')} />
+                    <a href={categoryUrlBuilderSingle('womens-jewelry')}>
+                        <Image src={getAssetUrl('static/img/jewelleries.jpg')} />
+                    </a>
                     <Heading
                         as="p"
                         fontSize={{base: '20px', md: '3xl', lg: '20px'}}
@@ -169,10 +173,12 @@ const Home = ({productSearchResult, isLoading}) => {
                     </Heading>
                 </GridItem>
                 <GridItem area={'shoes'}>
-                    <Image
-                        src={getAssetUrl('static/img/shoes.jpg')}
-                        marginTop={{base: '-100px', md: '120px', lg: '-80px'}}
-                    />
+                    <a href={categoryUrlBuilderSingle('womens-accessories-shoes')}>
+                        <Image
+                            src={getAssetUrl('static/img/shoes.jpg')}
+                            marginTop={{base: '-100px', md: '120px', lg: '-80px'}}
+                        />
+                    </a>
                     <Heading
                         as="p"
                         fontSize={{base: '20px', md: '3xl', lg: '20px'}}
@@ -186,7 +192,9 @@ const Home = ({productSearchResult, isLoading}) => {
                     </Heading>
                 </GridItem>
                 <GridItem area={'suits'}>
-                    <Image src={getAssetUrl( 'static/img/suits.jpg' )} width={{lg:'93%'}} />
+                    <a href={categoryUrlBuilderSingle('mens-clothing-jackets')}>
+                        <Image src={getAssetUrl('static/img/suits.jpg')} width={{lg: '93%'}} />
+                    </a>
                     <Heading
                         as="p"
                         fontSize={{base: '1xl', md: '3xl', lg: '20px'}}
@@ -202,35 +210,45 @@ const Home = ({productSearchResult, isLoading}) => {
             </Grid>
 
             {/* <MyHeader name="Opeyemi Peter" /> */}
-            <SimpleGrid columns={3} spacingX="40px" spacingY="20px" width="90%" margin="-350px auto 0px auto">
-                <Box height="">
-                    <Image src={getAssetUrl('static/img/sleeve.jpg')} width="100%" />
-                    <Image
-                        src={getAssetUrl('static/img/orange-swatch.jpg')}
-                        width="1.8em"
-                        borderRadius="0.9em"
-                        height="1.8em"
-                        marginTop="0.5rem"
-                    />
-                    <Heading
-                        as="p"
-                        fontSize={{lg: '1em'}}
-                        color="#00A1E0"
-                        fontWeight="bold"
-                        marginTop="0.5rem"
-                    >
-                        Sleeveless Pleated Top.
-                    </Heading>
-                    <Heading
-                        as="p"
-                        fontSize={{lg: '1em'}}
-                        color="black"
-                        fontWeight="bold"
-                        marginTop="0.3rem"
-                    >
-                        £31.36
-                    </Heading>
-                </Box>
+            <SimpleGrid
+                columns={3}
+                spacingX="40px"
+                spacingY="20px"
+                width="90%"
+                margin="-350px auto 0px auto"
+            >
+                <a href={productUrlBuilderSingle('25696513M')}>
+                    <Box height="">
+                        <Image src={getAssetUrl('static/img/sleeve.jpg')} width="100%" />
+
+                        <Image
+                            src={getAssetUrl('static/img/orange-swatch.jpg')}
+                            width="1.8em"
+                            borderRadius="0.9em"
+                            height="1.8em"
+                            marginTop="0.5rem"
+                        />
+                        <Heading
+                            as="p"
+                            fontSize={{lg: '1em'}}
+                            color="#00A1E0"
+                            fontWeight="bold"
+                            marginTop="0.5rem"
+                        >
+                            Sleeveless Pleated Top.
+                        </Heading>
+                        <Heading
+                            as="p"
+                            fontSize={{lg: '1em'}}
+                            color="black"
+                            fontWeight="bold"
+                            marginTop="0.3rem"
+                        >
+                            £31.36
+                        </Heading>
+                    </Box>
+                </a>
+
                 <Box padding="1.25rem">
                     <Heading
                         as="h1"
@@ -252,62 +270,67 @@ const Home = ({productSearchResult, isLoading}) => {
                         Only Online
                     </Heading>
                 </Box>
-                <Box>
-                    <Image src={getAssetUrl('static/img/white-top.jpg')} width="100%" />
-                    <Image
-                        src={getAssetUrl('static/img/white-swatch.jpg')}
-                        width="1.8em"
-                        borderRadius="0.9em"
-                        height="1.8em"
-                        marginTop="0.5rem"
-                    />
-                    <Heading
-                        as="p"
-                        fontSize={{lg: '1em'}}
-                        color="#00A1E0"
-                        fontWeight="bold"
-                        marginTop="0.5rem"
-                    >
-                        Woven Trimmed Cardigan
-                    </Heading>
-                    <Heading
-                        as="p"
-                        fontSize={{lg: '1em'}}
-                        color="black"
-                        fontWeight="bold"
-                        marginTop="0.3rem"
-                    >
-                        £56.96
-                    </Heading>
-                </Box>
-                <Box>
-                    <Image src={getAssetUrl('static/img/black-suit.jpg')} width="100%" />
-                    <Image
-                        src={getAssetUrl('static/img/black-swatch.jpg')}
-                        width="1.8em"
-                        borderRadius="0.9em"
-                        height="1.8em"
-                        marginTop="0.5rem"
-                    />
-                    <Heading
-                        as="p"
-                        fontSize={{lg: '1em'}}
-                        color="#00A1E0"
-                        fontWeight="bold"
-                        marginTop="0.5rem"
-                    >
-                        Black Single Pleat Athletic Fit Wool Suit
-                    </Heading>
-                    <Heading
-                        as="p"
-                        fontSize={{lg: '1em'}}
-                        color="black"
-                        fontWeight="bold"
-                        marginTop="0.3rem"
-                    >
-                        £191.99
-                    </Heading>
-                </Box>
+                <a href={productUrlBuilderSingle('25697682M')}>
+                    <Box>
+                        <Image src={getAssetUrl('static/img/white-top.jpg')} width="100%" />
+                        <Image
+                            src={getAssetUrl('static/img/white-swatch.jpg')}
+                            width="1.8em"
+                            borderRadius="0.9em"
+                            height="1.8em"
+                            marginTop="0.5rem"
+                        />
+                        <Heading
+                            as="p"
+                            fontSize={{lg: '1em'}}
+                            color="#00A1E0"
+                            fontWeight="bold"
+                            marginTop="0.5rem"
+                        >
+                            Woven Trimmed Cardigan
+                        </Heading>
+                        <Heading
+                            as="p"
+                            fontSize={{lg: '1em'}}
+                            color="black"
+                            fontWeight="bold"
+                            marginTop="0.3rem"
+                        >
+                            £56.96
+                        </Heading>
+                    </Box>
+                </a>
+                <a href={productUrlBuilderSingle('25686514M')}>
+                    <Box>
+                        <Image src={getAssetUrl('static/img/black-suit.jpg')} width="100%" />
+                        <Image
+                            src={getAssetUrl('static/img/black-swatch.jpg')}
+                            width="1.8em"
+                            borderRadius="0.9em"
+                            height="1.8em"
+                            marginTop="0.5rem"
+                        />
+                        <Heading
+                            as="p"
+                            fontSize={{lg: '1em'}}
+                            color="#00A1E0"
+                            fontWeight="bold"
+                            marginTop="0.5rem"
+                        >
+                            Black Single Pleat Athletic Fit Wool Suit
+                        </Heading>
+                        <Heading
+                            as="p"
+                            fontSize={{lg: '1em'}}
+                            color="black"
+                            fontWeight="bold"
+                            marginTop="0.3rem"
+                        >
+                            £191.99
+                        </Heading>
+                    </Box>
+                </a>
+                <a href={productUrlBuilderSingle('25519318M')}>
                 <Box>
                     <Image src={getAssetUrl('static/img/black-top.jpg')} width="100%" />
                     <Flex>
@@ -358,6 +381,8 @@ const Home = ({productSearchResult, isLoading}) => {
                         £15.36
                     </Heading>
                 </Box>
+                </a>
+                <a href={productUrlBuilderSingle('25720054M')}>
                 <Box>
                     <Image src={getAssetUrl('static/img/earrring.jpg')} width="100%" />
                     <Image
@@ -374,6 +399,7 @@ const Home = ({productSearchResult, isLoading}) => {
                         £16.64
                     </Heading>
                 </Box>
+</a>
             </SimpleGrid>
 
             {/* <Section
