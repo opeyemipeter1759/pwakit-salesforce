@@ -56,6 +56,7 @@ const ProductDetail = ({category, product, isLoading}) => {
     const toast = useToast()
     const navigate = useNavigation()
     const [primaryCategory, setPrimaryCategory] = useState(category)
+    console.log([product])
 
     // This page uses the `primaryCategoryId` to retrieve the category data. This attribute
     // is only available on `master` products. Since a variation will be loaded once all the
@@ -203,10 +204,16 @@ const ProductDetail = ({category, product, isLoading}) => {
                                 </AccordionButton>
                             </h2>
                             <AccordionPanel mb={6} mt={4}>
-                                {formatMessage({
-                                    defaultMessage: 'Coming Soon',
-                                    id: 'product_detail.accordion.message.coming_soon'
-                                })}
+                                {product?.c_productSizeFIt ? (
+                                    <>{product.c_productSizeFIt}</>
+                                ) : (
+                                    <>
+                                        {formatMessage({
+                                            defaultMessage: 'Coming Soon',
+                                            id: 'product_detail.accordion.message.coming_soon'
+                                        })}
+                                    </>
+                                )}
                             </AccordionPanel>
                         </AccordionItem>
 
@@ -224,10 +231,16 @@ const ProductDetail = ({category, product, isLoading}) => {
                                 </AccordionButton>
                             </h2>
                             <AccordionPanel mb={6} mt={4}>
-                                {formatMessage({
-                                    defaultMessage: 'Coming Soon',
-                                    id: 'product_detail.accordion.message.coming_soon'
-                                })}
+                                {product?.c_productReviews ? (
+                                    <>{product?.c_productReviews}</>
+                                ) : (
+                                    <>
+                                        {formatMessage({
+                                            defaultMessage: 'Coming Soon',
+                                            id: 'product_detail.accordion.message.coming_soon'
+                                        })}
+                                    </>
+                                )}
                             </AccordionPanel>
                         </AccordionItem>
 
@@ -245,10 +258,20 @@ const ProductDetail = ({category, product, isLoading}) => {
                                 </AccordionButton>
                             </h2>
                             <AccordionPanel mb={6} mt={4}>
-                                {formatMessage({
-                                    defaultMessage: 'Coming Soon',
-                                    id: 'product_detail.accordion.message.coming_soon'
-                                })}
+                                {product?.c_productQuestions ? (
+                                    <div
+                                        dangerouslySetInnerHTML={{
+                                            __html: product?.c_productQuestions
+                                        }}
+                                    />
+                                ) : (
+                                    <>
+                                        {formatMessage({
+                                            defaultMessage: 'Coming Soon',
+                                            id: 'product_detail.accordion.message.coming_soon'
+                                        })}
+                                    </>
+                                )}
                             </AccordionPanel>
                         </AccordionItem>
                     </Accordion>
