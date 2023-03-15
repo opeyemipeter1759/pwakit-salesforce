@@ -8,7 +8,8 @@
 import React, {useEffect, useState} from 'react'
 import PropTypes from 'prop-types'
 import {Helmet} from 'react-helmet'
-import {FormattedMessage, useIntl} from 'react-intl'
+import { FormattedMessage, useIntl } from 'react-intl'
+import {pluckIds} from '../../utils/utils'
 
 // Components
 import {
@@ -47,7 +48,7 @@ import {rebuildPathWithParams} from '../../utils/url'
 import {useHistory} from 'react-router-dom'
 import {useToast} from '../../hooks/use-toast'
 
-const ProductDetail = ({category, product, isLoading}) => {
+const ProductDetail = ({category, product, isLoading, promotions}) => {
     const {formatMessage} = useIntl()
     const basket = useBasket()
     const history = useHistory()
@@ -158,6 +159,7 @@ const ProductDetail = ({category, product, isLoading}) => {
             <Stack spacing={16}>
                 <ProductView
                     product={product}
+                    promotions={promotions}
                     category={primaryCategory?.parentCategoryTree || []}
                     addToCart={(variant, quantity) => handleAddToCart(variant, quantity)}
                     addToWishlist={(_, quantity) => handleAddToWishlist(quantity)}
@@ -338,7 +340,7 @@ ProductDetail.shouldGetProps = ({previousLocation, location}) => {
 
 ProductDetail.getProps = async ({res, params, location, api}) => {
     const {productId} = params
-    let category, product
+    let category, product, promotions
     const urlParams = new URLSearchParams(location.search)
 
     product = await api.shopperProducts.getProduct({
@@ -351,6 +353,16 @@ ProductDetail.getProps = async ({res, params, location, api}) => {
     if (product?.primaryCategoryId) {
         category = await api.shopperProducts.getCategory({
             parameters: {id: product?.primaryCategoryId, levels: 1}
+        })
+    }
+
+    // Get promotionIds as a string of comma-separated values
+    if (product.productPromotions) {
+        const promotionIds = pluckIds(product.productPromotions, 'promotionId')
+
+        // Get the promotions for the product
+        promotions = await api.shopperPromotions.getPromotions({
+            parameters: {ids: promotionIds}
         })
     }
 
@@ -368,7 +380,12 @@ ProductDetail.getProps = async ({res, params, location, api}) => {
         throw new HTTPNotFound(category.detail)
     }
 
-    return {category, product}
+    if (typeof promotions?.type === 'string') {
+        throw new HTTPNotFound(promotions.detail)
+    }
+
+
+    return {category, product, promotions}
 }
 
 ProductDetail.propTypes = {
@@ -384,6 +401,11 @@ ProductDetail.propTypes = {
      * The current state of `getProps` when running this value is `true`, otherwise it's
      * `false`. (Provided internally)
      */
+    /**
+         * The promotion object to be shown on the page..
+         */
+    promotions: PropTypes.object,
+
     isLoading: PropTypes.bool,
     /**
      * The current react router match object. (Provided internally)
